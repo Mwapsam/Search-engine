@@ -76,3 +76,5 @@ end
 
 # Project specific gems
 gem 'devise'
+gem 'minitest', '~> 5.16.3'
+gem 'tzinfo', '~> 2.0'

@@ -254,6 +254,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  minitest (~> 5.16.3)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
@@ -263,6 +264,7 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   turbo-rails
+  tzinfo (~> 2.0)
   tzinfo-data
   web-console
   webdrivers
