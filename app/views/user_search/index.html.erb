@@ -1,2 +1,48 @@
-<h1>UserSearch#index</h1>
-<p>Find me in app/views/user_search/index.html.erb</p>
+<section class="container-fluid m-5">
+    <h5 class="text-center pb-3">Search Results</h5>
+    <div class="row gap-5">
+        <div class="col-md-8">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Searches</th>
+                            <th scope="col">Number of Searches</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @results.each do |result| %>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td> <%= result.username %></td>
+                                <td>
+                                    <% result.recent_searches.each do |user_search| %>
+                                        <p class="flex flex-column"><%= user_search.title %></p>
+                                    <% end %>
+                                </td>
+                                <td> <%= result.user_searches.count %> </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+                
+        </div>
+        <div class="card col-md-4" style="width: 15rem;">
+            <h5 class="text-center text-dark m-3">Trending Articles</h5>
+            <div class="card-body">
+                <% @results.each do |trend| %>
+                    <% trend.trending_articles.each do |trending, key| %>
+                        <div class="d-flex gap-3">
+                            <%= truncate(trending, :length => 12, :separator => ' ') %>
+                            <p><%= key %> times</p>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    
+</section>

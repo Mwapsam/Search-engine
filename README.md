@@ -53,8 +53,8 @@ The `search()` method is called as a user triggers the input event on the text f
 The `data-controller` element is needed to make javascript work in the form.
 
     <%= form_with(url: search_articles_path, method: :post, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}, class: "form-outline mb-4") do |form| %>
-        <%= form.label :query, "Search by title:", class: "form-label" %>
-        <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"} %>
+            <%= form.label :query, "Search by title:", class: "form-label" %>
+            <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"} %>
     <% end %>
 
 Here we listen for the input event and then target the stimulus controller search method. `(data: {action: "input->search-form#search"})`.

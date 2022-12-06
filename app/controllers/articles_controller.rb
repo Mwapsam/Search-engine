@@ -26,6 +26,6 @@ class ArticlesController < ApplicationController
 
     def save_results(data)
         results = UserSearch.new(title: data, user_id: current_user.id)
-        results.save
+        results.save!
     end
 end
