@@ -1,4 +1,4 @@
-This is a Turbocharged real-time search build with Ruby on Rails 7. It allows users to search for the articles, and then to have analytics that display what users were searching for. 
+This is a Turbocharged real-time search build with Ruby on Rails 7. It allows users to search for the articles, and then have analytics that display what users were searching for. 
 
 ## Archetecture
 The application has three tables in the database; 
