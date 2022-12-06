@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :articles
+  get 'user_search/index'
+  get 'user_search/show'
+  resources :articles do
+    collection do
+      post :search
+    end
+  end
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "articles#index"
 end

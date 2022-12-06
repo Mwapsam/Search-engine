@@ -54,6 +54,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -78,3 +79,4 @@ end
 gem 'devise'
 gem 'minitest', '~> 5.16.3'
 gem 'tzinfo', '~> 2.0'
+gem "pg_search"

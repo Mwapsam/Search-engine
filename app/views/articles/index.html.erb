@@ -1,0 +1,10 @@
+<section class="container m-5">
+    <%= render "articles/search_form" %>
+    <div class="card w-full p-3 mb-5">
+        <div class="card-body">
+            <h5 class="card-title text-center">Articles</h5>
+            <%= render "articles", articles: @articles %>
+        </div> 
+    </div>
+</section>
+
