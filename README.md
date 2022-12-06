@@ -2,9 +2,21 @@ This is a Turbocharged real-time search build with Ruby on Rails 7. It allows us
 
 ## Archetecture
 The application has three tables in the database; 
-- Users: Stores user data,
-- Articles: Stores articles,
-- UserSearches: Stores user's search results. Stored results are later analised and displayed.
+- Users:
+
+        - username
+        - email
+        - password
+        
+- Articles:
+
+        - title
+        - body
+        
+- UserSearches:
+
+        - title
+        - user_id
 
 ## Realtime features
 To efficiently query the database for the searched items, I used PgSearch gem which takes advantage of PostgreSQL's full text search.
