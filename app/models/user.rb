@@ -4,8 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_searches, dependent: :destroy
+
   validates :username, :email, presence: true, length: { maximum: 250 }
   validate :password_requirements_are_met, on: :create
+
+  def recent_searches
+    user_searches.order(created_at: :desc).limit(5)
+  end
+
+  def trending_articles
+    user_searches.select(:title).group(:title).having("count(*) > 1").size
+  end
 
   def password_requirements_are_met
     rules = {

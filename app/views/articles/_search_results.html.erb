@@ -1,0 +1,9 @@
+<% if articles.present? %>
+  <div class="card w-full bg-blue-50 mb-5 p-3">
+    <p>Found <%= articles.count %> items</p>
+    <% articles.each do |article| %>
+      <br>
+      <%= link_to highlight(article.title, params[:title_search]), article, class: "pt-3" %>
+    <% end %>
+  </div>
+<% end %>
