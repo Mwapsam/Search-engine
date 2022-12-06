@@ -45,7 +45,12 @@ In the controller I passed `params[:query]` to the `:article_search` which conta
             end
         end
  
-The `save_results` method saves the user's search results to user_searches table.
+The `save_results` method receives the titles from search results and saves them the to user_searches table.
+          
+          def save_results(data)
+              results = UserSearch.new(title: data, user_id: current_user.id)
+              results.save!
+          end
 
 ## Automatic Realtime Search
 To make the automatic realtime search, I used Stimulus JS that comes with Rails 7. In the app/javascript/controllers/search_form.js, I wrote the following code.
