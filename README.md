@@ -20,7 +20,7 @@ To efficiently query the database for the searched items, I used PgSearch gem wh
 
 I used pg_search_scope to build a search scope. The parameter article_search is a scope name, and the :against, tells pg_search_scope which column or columns to search against. The :tsearch (Full Text Search) feature with prefix: true  option, match the prefix of the items with the input query.
 
-In the controller I passed `params[:query]` to the `:article_search` which contain user input. The user input is then used to search in the `:title` column, matched results are then stored `@search_results` variable which is iterated and passed to `save_results` method. 
+In the controller I passed `params[:query]` to the `:article_search` which contain user input. The user input is then used to search in the `:title` column, matched results are then stored in a `@search_results` variable which is iterated and passed to the `save_results` method. 
 
         def search
             if params[:query].present?
@@ -34,6 +34,32 @@ In the controller I passed `params[:query]` to the `:article_search` which conta
         end
  
 The `save_results` method saves the user's search results to user_searches table.
+
+## Automatic Realtime Search
+To make the automatic realtime search, I used Stimulus JS that comes with Rails 7. In the app/javascript/controllers/search_form.js, I wrote the following code.
+
+    import { Controller } from "@hotwired/stimulus"
+
+    export default class extends Controller {
+        search() {
+            clearTimeout(this.timeout)
+                this.timeout = setTimeout(() => {
+                    this.element.requestSubmit()
+            }, 1000)
+        }
+    }
+
+The `search()` method is called as a user triggers the input event on the text field. Then the javascript function `setTimeout` submits the form every 1 second. The `clearTimeout` function is called each time an input event gets triggered to acts as a looping mechanism for the life span of the input event. 
+The `data-controller` element is needed to make javascript work in the form.
+
+    <%= form_with(url: search_articles_path, method: :post, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}, class: "form-outline mb-4") do |form| %>
+        <%= form.label :query, "Search by title:", class: "form-label" %>
+        <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"} %>
+    <% end %>
+
+Here we listen for the input event and then target the stimulus controller search method. `(data: {action: "input->search-form#search"})`.
+
+
 
 ## Built With
 

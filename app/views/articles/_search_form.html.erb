@@ -1,7 +1,8 @@
-<%= form_with(url: search_articles_path, method: :post, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}, class: "form-outline mb-4") do |form| %>
-    <%= form.label :query, "Search by title:", class: "form-label" %>
-    <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"} %>
-<% end %>
+<div id="form">
+    <%= form_with(url: search_articles_path, method: :post, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}, class: "form-outline mb-4") do |form| %>
+        <%= form.label :query, "Search by title:", class: "form-label" %>
+        <%= form.text_field :query, class: "form-control", data: {action: "input->search-form#search"} %>
+    <% end %>
 
-<div id="search_results"></div>    
-
+    <div id="search_results"></div>    
+</div>
