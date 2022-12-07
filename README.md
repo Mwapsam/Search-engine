@@ -66,7 +66,7 @@ To make the automatic realtime search, I used Stimulus JS that comes with Rails 
         }
     }
 
-The `search()` method is called as a user triggers the input event on the text field. Then the javascript function `setTimeout` submits the form every 1 second. The `clearTimeout` function is called each time an input event gets triggered to acts as a looping mechanism for the life span of the input event. 
+The `search()` method is called as a user triggers the input event on the text field. Then the javascript function `setTimeout` submits the form every 1 second. The `clearTimeout` function is called each time an input event gets triggered to act as a looping mechanism for the life span of the input event. 
 The `data-controller` element is needed to make javascript work in the form.
 
     <%= form_with(url: search_articles_path, method: :post, data: {controller: "search-form", turbo_frame: "articles", turbo_action: "advance"}, class: "form-outline mb-4") do |form| %>
